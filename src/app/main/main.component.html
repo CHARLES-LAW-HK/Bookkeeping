@@ -1,1 +1,39 @@
-<p>main works!</p>
+<form [formGroup]="mainForm" class="mainForm">
+    <div class="container background" style="margin-bottom: 10px; max-width: 250px;">
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-form-field">
+                    <mat-label>注碼: $ </mat-label>
+                    <input matInput type="number" style="width: 60px;" [(ngModel)]="bet" [ngModelOptions]="{standalone: true}"autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <div *ngIf="sum == 0" style="max-width: fit-content; float: right;" class="alert alert-success">
+                    <strong>啱數!</strong>
+                </div>
+                <div *ngIf="sum != 0" style="max-width: fit-content; float: right;" class="alert alert-danger">
+                    <strong>唔啱數!</strong>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col">
+                <section *ngFor="let people of peoples; let i = index">
+                    <table class="tblPeople">
+                        <tr style="border: 1px solid #000">
+                            <td colspan="2"><span><mat-icon>face</mat-icon>{{people.name}}</span></td>
+                        </tr>
+                        <tr>
+                            <td><div style="min-width: 75px;"><span>$ {{people.money}}</span></div></td>
+                            <td>
+                                <button class="btn btn-success btnAdd" (click)="addMoney(i);" style="margin-right: 10px;"><mat-icon>add</mat-icon></button>
+                                <button class="btn btn-danger btnMinus" (click)="minusMoney(i);"><mat-icon>remove</mat-icon></button>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</form>

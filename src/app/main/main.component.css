@@ -1,0 +1,21 @@
+.mainForm{
+    margin: 10px;
+}
+.btnAdd{
+    cursor: pointer;
+}
+
+.btnMinus{
+    cursor: pointer;
+}
+
+.tblPeople{
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    font-size: 24px;
+    width: 100%;
+}
+
+.tblPeople > tr > td{
+    padding: 6px;
+}
