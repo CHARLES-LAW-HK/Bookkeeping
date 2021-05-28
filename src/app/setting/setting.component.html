@@ -1,13 +1,42 @@
-<form [formGroup]="settingForm">
-    <div>
-        <section *ngFor="let people of peoples; let i = index">
-            <mat-form-field class="example-form-field">
-                <mat-label>Name</mat-label>
-                <input matInput type="text" [(ngModel)]="people.name" [ngModelOptions]="{standalone: true}" name="name_{i}" autocomplete="off">
-            </mat-form-field>
-            <mat-icon style="cursor: pointer;" (click)="removePeople(i);">delete</mat-icon>
-        </section>
-        <button (click)="addPeople();">Add People</button>
-        <button (click)="startGame();">Start</button>
+<form [formGroup]="settingForm" class="settingForm">
+    <div class="container background">
+        <div class="row">
+            <div class="col">
+                <section *ngFor="let player of players; let i = index">
+                    <table class="tblPlayer">
+                        <tr>
+                            <td colspan="3"><span>Player {{i + 1}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="faceIcon">
+                                    <span><mat-icon>face</mat-icon></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="nameField">
+                                    <span style="color: #4c4c4c; display:block; font-weight: lighter;">Name</span>
+                                    <mat-form-field class="players" appearance="fill">
+                                        <input matInput type="text" style="font-weight: bold;" (focus)="$event.target.select()"
+                                        [(ngModel)]="player.name" [ngModelOptions]="{standalone: true}" name="name_{{i}}" autocomplete="off">
+                                    </mat-form-field>
+                                </div>
+                            </td>
+                            <td>
+                                <mat-icon style="cursor: pointer; color:#4c4c4c;" (click)="removePlayer(i);">delete</mat-icon>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-warning" (click)="addPlayer();">Add Player</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-success" style="float:right;" (click)="startGame();">Start</button>
+            </div>
+        </div>
     </div>
 </form>

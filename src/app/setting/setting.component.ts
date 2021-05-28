@@ -8,8 +8,11 @@ import { AppService } from '../app.service';
   styleUrls: ['./setting.component.css', '../../assets/bootstrap4.5.2/css/bootstrap.css']
 })
 export class SettingComponent implements OnInit {  
-  public peoples: any[] = [{
-    name: '',
+  public players: any[] = [{
+    name: 'Player1',
+    money: 0
+  },{
+    name: 'Player2',
     money: 0
   }];
 
@@ -22,22 +25,22 @@ export class SettingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addPeople(){
-    this.peoples.push({name:'', money: 0});
+  addPlayer(){
+    this.players.push({name:'Player' + (this.players.length + 1), money: 0});
   }
 
-  removePeople(i: number){
-    if(this.peoples.length == 1){
-      this.peoples[i].name = '';
-      this.peoples[i].money = 0;
-    }
-    else{
-      this.peoples.splice(i,1);
+  removePlayer(i: number){
+    if(this.players.length > 2){
+      this.players.splice(i,1);
     }
   }
 
   startGame(){
-    this.service.peoples = this.peoples;
+    this.players.forEach(p => {
+      if(p.name == "")
+        p.name = "Unknown"
+    });
+    this.service.players = this.players;
     this.service.router.navigate(["/main"]);
   }
 }

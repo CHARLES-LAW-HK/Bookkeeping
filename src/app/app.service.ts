@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AppService {
-  public peoples: any[];
+  public players: any[];
 
   constructor(public router: Router) { }
 }

@@ -8,7 +8,7 @@ import { AppService } from '../app.service';
   styleUrls: ['./main.component.css', '../../assets/bootstrap4.5.2/css/bootstrap.css']
 })
 export class MainComponent implements OnInit {
-  public peoples = this.service.peoples;
+  public players = this.service.players;
   mainForm: FormGroup;
   bet: number = 1;
   sum: number = 0;
@@ -18,36 +18,36 @@ export class MainComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(this.service.peoples == null || this.service.peoples.length == 0){
-      this.service.router.navigate(["/setting"]);
-      // this.peoples = [{
-      //   name: '小明',
-      //   money: 0
-      // },
-      // {
-      //   name: '大明',
-      //   money: 0
-      // }]
+    if(this.service.players == null || this.service.players.length == 0){
+      // this.service.router.navigate(["/setting"]);
+      this.players = [{
+        name: '小明',
+        money: 0
+      },
+      {
+        name: '大明',
+        money: 0
+      }]
     }
-    this.peoples.forEach(m => {
+    this.players.forEach(m => {
       this.sum += m.money;
     });
   }
 
   checkSum(){
     this.sum = 0;
-    this.peoples.forEach(m => {
+    this.players.forEach(m => {
       this.sum += m.money;
     });
   }
 
   addMoney(i: number){
-    this.peoples[i].money += this.bet;
+    this.players[i].money += this.bet;
     this.checkSum();
   }
 
   minusMoney(i: number){
-    this.peoples[i].money -= this.bet;
+    this.players[i].money -= this.bet;
     this.checkSum();
   }
 }

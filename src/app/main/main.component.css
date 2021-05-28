@@ -1,5 +1,5 @@
 .mainForm{
-    margin: 10px;
+    padding-top: 10px;
 }
 .btnAdd{
     cursor: pointer;
@@ -9,13 +9,24 @@
     cursor: pointer;
 }
 
-.tblPeople{
-    border: 1px solid #000;
+.tblPlayer{
+    border: 2px solid #4C4C4C;
     margin-bottom: 10px;
     font-size: 24px;
     width: 100%;
+    border-collapse: separate;
+    border-radius: 10px;
+    border-spacing: 0;
 }
 
-.tblPeople > tr > td{
+.tblPlayer > tr:first-child > td{
+    border-bottom: 2px solid #4C4C4C;
+}
+
+.tblPlayer > tr > td{
     padding: 6px;
+}
+
+::ng-deep .mainForm .mat-form-field-label{
+    font-size: 20px !important;
 }
