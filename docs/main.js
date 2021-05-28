@@ -487,15 +487,15 @@ class MainComponent {
     }
     ngOnInit() {
         if (this.service.players == null || this.service.players.length == 0) {
-            // this.service.router.navigate(["/setting"]);
-            this.players = [{
-                    name: '小明',
-                    money: 0
-                },
-                {
-                    name: '大明',
-                    money: 0
-                }];
+            this.service.router.navigate(["/setting"]);
+            // this.players = [{
+            //   name: '小明',
+            //   money: 0
+            // },
+            // {
+            //   name: '大明',
+            //   money: 0
+            // }]
         }
         this.players.forEach(m => {
             this.sum += m.money;
