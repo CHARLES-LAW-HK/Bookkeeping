@@ -22,7 +22,7 @@
                 <section *ngFor="let player of players; let i = index">
                     <table class="tblPlayer">
                         <tr>
-                            <td colspan="2"><span><mat-icon>face</mat-icon>{{player.name}}</span></td>
+                            <td colspan="2"><mat-icon>face</mat-icon><span>{{player.name}}</span></td>
                         </tr>
                         <tr>
                             <td><div style="min-width: 75px;"><span>$ {{player.money}}</span></div></td>
@@ -33,6 +33,11 @@
                         </tr>
                     </table>
                 </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-info" (click)="back();">Back</button>
             </div>
         </div>
     </div>

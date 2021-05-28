@@ -29,9 +29,11 @@ export class MainComponent implements OnInit {
       //   money: 0
       // }]
     }
-    this.players.forEach(m => {
-      this.sum += m.money;
-    });
+    else{
+      this.players.forEach(m => {
+        this.sum += m.money;
+      });
+    }
   }
 
   checkSum(){
@@ -49,5 +51,9 @@ export class MainComponent implements OnInit {
   minusMoney(i: number){
     this.players[i].money -= this.bet;
     this.checkSum();
+  }
+
+  back(){
+    this.service.router.navigate(["/setting"]);
   }
 }

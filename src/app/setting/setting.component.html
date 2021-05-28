@@ -16,8 +16,8 @@
                             <td>
                                 <div class="nameField">
                                     <span style="color: #4c4c4c; display:block; font-weight: lighter;">Name</span>
-                                    <mat-form-field class="players" appearance="fill">
-                                        <input matInput type="text" style="font-weight: bold;" (focus)="$event.target.select()"
+                                    <mat-form-field class="players" appearance="fill" style="width: 100%;">
+                                        <input matInput type="text" style="font-weight: bold;" (focus)="$event.target.select()" [maxlength]="20"
                                         [(ngModel)]="player.name" [ngModelOptions]="{standalone: true}" name="name_{{i}}" autocomplete="off">
                                     </mat-form-field>
                                 </div>
