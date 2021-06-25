@@ -57,3 +57,7 @@
 ::ng-deep .settingForm  .mat-form-field {
     padding-bottom: 1px;
 }
+
+.mat-icon{
+    vertical-align: middle;
+}

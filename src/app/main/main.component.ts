@@ -13,6 +13,8 @@ export class MainComponent implements OnInit {
   mainForm: FormGroup;
   bet: number = 1;
   sum: number = 0;
+  bankerCount: number = 0;
+  isAutoChangeBanker: boolean = false;
 
   constructor(public service: AppService, public formBuilder: FormBuilder) {
     this.mainForm = this.formBuilder.group({});
@@ -73,6 +75,8 @@ export class MainComponent implements OnInit {
   }
 
   beBanker(i: number){
+    console.log("beBanker i: ", i);
+    this.bankerCount = 0;
     if(this.players[i].banker){
       this.players[i].banker = false;
     }
@@ -85,6 +89,7 @@ export class MainComponent implements OnInit {
   }
 
   endRound(){
+    this.bankerCount++;
     this.previousGame = [];
     for(var i = 0; i < this.players.length; i++){
       this.previousGame.push({
@@ -93,6 +98,23 @@ export class MainComponent implements OnInit {
         banker: this.players[i].banker
       })
     }
+    if(this.bankerCount == 3 && this.isAutoChangeBanker){
+      for(var i = 0; i < this.players.length; i++){
+        if(this.players[i].banker){
+          if(i+1 < this.players.length){
+            this.beBanker(i + 1);
+          }
+          else{
+            this.beBanker(0);
+          }
+          break;
+        }
+      }
+    }
+  }
+
+  autoChangeBanker(){
+    this.isAutoChangeBanker = !this.isAutoChangeBanker;
   }
 
   calculate(i: number){

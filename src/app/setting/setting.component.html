@@ -5,12 +5,26 @@
                 <section *ngFor="let player of players; let i = index">
                     <table class="tblPlayer">
                         <tr>
-                            <td colspan="3"><span>Player {{i + 1}}</span></td>
+                            <td colspan="3"><span>玩家 {{i + 1}}</span></td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="faceIcon">
-                                    <span><mat-icon>face</mat-icon></span>
+                                    <span>
+                                        <mat-icon *ngIf="player.icon == 0">face</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 1">support_agent</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 2">emoji_emotions</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 3">sentiment_satisfied</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 4">sentiment_very_satisfied</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 5">sentiment_satisfied_alt</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 6">sentiment_dissatisfied</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 7">sentiment_very_dissatisfied</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 8">mood</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 9">sentiment_neutral</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 10">mood_bad</mat-icon>
+                                        <mat-icon *ngIf="player.icon == 11">sick</mat-icon>
+                                        <mat-icon *ngIf="player.icon == null">error</mat-icon>
+                                    </span>
                                 </div>
                             </td>
                             <td>
@@ -32,10 +46,10 @@
         </div>
         <div class="row">
             <div class="col">
-                <button type="button" class="btn btn-warning" (click)="addPlayer();">Add Player</button>
+                <button type="button" class="btn btn-warning" (click)="addPlayer();"><mat-icon>person_add</mat-icon> 加入</button>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-success" style="float:right;" (click)="startGame();">Start</button>
+                <button type="button" class="btn btn-success" style="float:right;" (click)="startGame();"><mat-icon>play_arrow</mat-icon> 開始</button>
             </div>
         </div>
     </div>

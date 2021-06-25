@@ -11,11 +11,13 @@ export class SettingComponent implements OnInit {
   public players: any[] = [{
     name: 'Player1',
     money: 0,
-    banker: false
+    banker: false,
+    icon: this.getRandomInt(12)
   },{
     name: 'Player2',
     money: 0,
-    banker: false
+    banker: false,
+    icon: this.getRandomInt(12)
   }];
 
   settingForm: FormGroup;
@@ -29,12 +31,21 @@ export class SettingComponent implements OnInit {
     if(localStorage.getItem("player") && localStorage.getItem("player") != "null"){
       temp = <Player[]>(JSON.parse(localStorage.getItem("player")));
       console.log("Player:", temp);
-      this.players = temp;
+      this.players = [];
+      temp.forEach(e=>{
+        this.players.push({
+          name: e.name,
+          money: 0,
+          banker: false,
+          icon: this.getRandomInt(12)
+        });
+      })
+      //this.players = temp;
     }
   }
 
   addPlayer(){
-    this.players.push({name:'Player' + (this.players.length + 1), money: 0, banker: false});
+    this.players.push({name:'Player' + (this.players.length + 1), money: 0, banker: false, icon: this.getRandomInt(12)});
   }
 
   removePlayer(i: number){
@@ -51,6 +62,10 @@ export class SettingComponent implements OnInit {
     localStorage.setItem("player", JSON.stringify(this.players));
     this.service.players = this.players;
     this.service.router.navigate(["/main"]);
+  }
+
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
   }
 }
 
