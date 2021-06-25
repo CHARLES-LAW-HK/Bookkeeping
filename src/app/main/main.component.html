@@ -51,7 +51,7 @@
                             <td>
                                 <div style="min-width: 80px; font-size: 18px;">
                                     <span>$ {{player.money}}</span>
-                                    <span [ngClass]="{'colorGreen': calculate(i) > 0, 'colorRed': calculate(i) < 0}"> ( {{calculate(i)}} )</span>
+                                    <span *ngIf="calculate(i) != 0" [ngClass]="{'colorGreen': calculate(i) > 0, 'colorRed': calculate(i) < 0}"> ( {{calculate(i)}} )</span>
                                 </div>
                             </td>
                             <td>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col" style="margin-top: 20px;">
                 <button type="button" class="btn btn-info" (click)="back();"><mat-icon>arrow_back</mat-icon> 返回</button>
                 <button type="button" class="btn btn-secondary" (click)="endRound();" style="float: right;">結算</button>
             </div>
