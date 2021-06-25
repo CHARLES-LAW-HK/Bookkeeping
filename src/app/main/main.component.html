@@ -1,8 +1,8 @@
 <form [formGroup]="mainForm" class="mainForm">
     <div class="container background">
         <div class="row">
-            <div class="col">
-                <mat-form-field class="betField">
+            <div class="col" style="max-width: 30%;">
+                <mat-form-field class="betField" style="max-width: 60px;">
                     <mat-label>注碼: $ </mat-label>
                     <input matInput type="number" style="width:25%; font-size: 20px; font-weight: bold;" [(ngModel)]="bet" [ngModelOptions]="{standalone: true}"autocomplete="off">
                 </mat-form-field>
@@ -14,7 +14,7 @@
                 <div *ngIf="sum != 0" style="max-width: fit-content; float: right;" class="alert alert-danger">
                     <strong>唔啱數!</strong>
                 </div>
-                <button class="btn btn-light" (click)="autoChangeBanker()" style="float: right; margin-right: 10px;">
+                <button class="btn btn-light" (click)="autoChangeBanker()" style="min-width: 120px; float: right; margin-right: 10px;">
                     <mat-icon *ngIf="!isAutoChangeBanker">check_box_outline_blank</mat-icon>
                     <mat-icon *ngIf="isAutoChangeBanker">check_box</mat-icon>
                      自動過莊
