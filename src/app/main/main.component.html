@@ -4,7 +4,7 @@
             <div class="col" style="max-width: 30%;">
                 <mat-form-field class="betField" style="max-width: 60px;">
                     <mat-label>注碼: $ </mat-label>
-                    <input matInput type="number" style="width:25%; font-size: 20px; font-weight: bold;" [(ngModel)]="bet" [ngModelOptions]="{standalone: true}"autocomplete="off">
+                    <input matInput type="number" style="font-size: 20px; font-weight: bold;" [(ngModel)]="bet" [ngModelOptions]="{standalone: true}"autocomplete="off">
                 </mat-form-field>
             </div>
             <div class="col">
@@ -49,9 +49,9 @@
                         </tr>
                         <tr>
                             <td>
-                                <div style="min-width: 80px;">
-                                    <span style="margin-right: 30px;">$ {{player.money}}</span>
-                                    <span [ngClass]="{'colorGreen': calculate(i) > 0, 'colorRed': calculate(i) < 0}">( {{calculate(i)}} )</span>
+                                <div style="min-width: 80px; font-size: 18px;">
+                                    <span>$ {{player.money}}</span>
+                                    <span [ngClass]="{'colorGreen': calculate(i) > 0, 'colorRed': calculate(i) < 0}"> ( {{calculate(i)}} )</span>
                                 </div>
                             </td>
                             <td>
