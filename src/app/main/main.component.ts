@@ -9,6 +9,7 @@ import { AppService } from '../app.service';
 })
 export class MainComponent implements OnInit {
   public players = this.service.players;
+  previousGame : any[] = [];
   mainForm: FormGroup;
   bet: number = 1;
   sum: number = 0;
@@ -33,6 +34,14 @@ export class MainComponent implements OnInit {
       this.players.forEach(m => {
         this.sum += m.money;
       });
+      //this.previousGame = this.players;
+      for(var i = 0; i < this.players.length; i++){
+        this.previousGame.push({
+          name: this.players[i].name,
+          money: this.players[i].money,
+          banker: this.players[i].banker
+        })
+      }
     }
   }
 
@@ -45,12 +54,49 @@ export class MainComponent implements OnInit {
 
   addMoney(i: number){
     this.players[i].money += this.bet;
+    this.players.forEach(m => {
+      if(m.banker){
+        m.money -= this.bet;
+      }
+    });
     this.checkSum();
   }
 
   minusMoney(i: number){
     this.players[i].money -= this.bet;
+    this.players.forEach(m => {
+      if(m.banker){
+        m.money += this.bet;
+      }
+    });
     this.checkSum();
+  }
+
+  beBanker(i: number){
+    if(this.players[i].banker){
+      this.players[i].banker = false;
+    }
+    else{
+      this.players.forEach(m => {
+        m.banker = false;
+      });
+      this.players[i].banker = true;
+    }
+  }
+
+  endRound(){
+    this.previousGame = [];
+    for(var i = 0; i < this.players.length; i++){
+      this.previousGame.push({
+        name: this.players[i].name,
+        money: this.players[i].money,
+        banker: this.players[i].banker
+      })
+    }
+  }
+
+  calculate(i: number){
+    return this.players[i].money - this.previousGame[i].money;
   }
 
   back(){

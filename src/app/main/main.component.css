@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.btnBanker{
+    cursor: pointer;
+}
+
 .tblPlayer{
     border: 2px solid #4C4C4C;
     margin-bottom: 10px;
@@ -29,4 +33,12 @@
 
 ::ng-deep .mainForm .mat-form-field-label{
     font-size: 20px !important;
+}
+
+.colorGreen{
+    color:#28a745;
+}
+
+.colorRed{
+    color:#dc3545;
 }

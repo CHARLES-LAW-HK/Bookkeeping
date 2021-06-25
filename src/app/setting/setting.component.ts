@@ -10,10 +10,12 @@ import { AppService } from '../app.service';
 export class SettingComponent implements OnInit {  
   public players: any[] = [{
     name: 'Player1',
-    money: 0
+    money: 0,
+    banker: false
   },{
     name: 'Player2',
-    money: 0
+    money: 0,
+    banker: false
   }];
 
   settingForm: FormGroup;
@@ -23,10 +25,16 @@ export class SettingComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    var temp : Player[];
+    if(localStorage.getItem("player") && localStorage.getItem("player") != "null"){
+      temp = <Player[]>(JSON.parse(localStorage.getItem("player")));
+      console.log("Player:", temp);
+      this.players = temp;
+    }
   }
 
   addPlayer(){
-    this.players.push({name:'Player' + (this.players.length + 1), money: 0});
+    this.players.push({name:'Player' + (this.players.length + 1), money: 0, banker: false});
   }
 
   removePlayer(i: number){
@@ -40,7 +48,14 @@ export class SettingComponent implements OnInit {
       if(p.name == "")
         p.name = "Unknown"
     });
+    localStorage.setItem("player", JSON.stringify(this.players));
     this.service.players = this.players;
     this.service.router.navigate(["/main"]);
   }
+}
+
+export interface Player{
+  name: string;
+  money: number;
+  banker: boolean;
 }
