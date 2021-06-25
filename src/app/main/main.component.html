@@ -41,6 +41,7 @@
                                     <mat-icon *ngIf="player.icon == 9">sentiment_neutral</mat-icon>
                                     <mat-icon *ngIf="player.icon == 10">mood_bad</mat-icon>
                                     <mat-icon *ngIf="player.icon == 11">sick</mat-icon>
+                                    <mat-icon *ngIf="player.icon == null">error</mat-icon>
                                 </span>
                                 <span style="vertical-align: middle;">{{player.name}}</span>
                                 <mat-icon *ngIf="player.banker" style="margin-left: 5px; color: #ebb734;">emoji_events</mat-icon>
